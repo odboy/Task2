@@ -4,5 +4,5 @@
 uploads
 test.php
 flag.php
-/part*/*
+/part*
 !.gitkeep
