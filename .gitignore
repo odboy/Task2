@@ -1,0 +1,8 @@
+.DS_Store
+.vscode
+.idea
+uploads
+test.php
+flag.php
+/part*/*
+!.gitkeep

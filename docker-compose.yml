@@ -1,0 +1,82 @@
+version: "3"
+
+services:
+  mysql:
+    build: ./mysql
+    container_name: 'mysql_${VERSION}'
+    restart: 'always'
+    ports:
+      - "33066:3306"
+    volumes: 
+      - ${INIT_SQL-./mysql/data}:/docker-entrypoint-initdb.d   # 官方Dockerfile自动执行docker-entrypoint-initdb.d的sh,sql,sql.gz文件.
+    environment:
+      MYSQL_ROOT_PASSWORD: LampxPass
+      MYSQL_DATABASE: webdb
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: lampxpass
+  web01:
+    build: 
+      context: ./webserver
+    container_name: 'web_${VERSION}_p1'
+    restart: 'always'
+    ports:
+      - "8081:80"
+    links: 
+      - mysql
+    volumes: 
+      - ${DOCUMENT_ROOT-./part1}:/var/www/html
+      - ${PHP_INI-./php.ini}:/usr/local/etc/php/php.ini
+      - ${VHOSTS_DIR-./custom.conf}:/etc/apache2/sites-enabled/custom.conf
+  web02:
+    build: 
+      context: ./webserver
+    container_name: 'web_${VERSION}_p2'
+    restart: 'always'
+    ports:
+      - "8082:80"
+    links: 
+      - mysql
+    volumes: 
+      - ${DOCUMENT_ROOT-./part2}:/var/www/html
+      - ${PHP_INI-./php.ini}:/usr/local/etc/php/php.ini
+      - ${VHOSTS_DIR-./custom.conf}:/etc/apache2/sites-enabled/custom.conf
+  web03:
+    build: 
+      context: ./webserver
+    container_name: 'web_${VERSION}_p3'
+    restart: 'always'
+    ports:
+      - "8083:80"
+    links: 
+      - mysql
+    volumes: 
+      - ${DOCUMENT_ROOT-./part3}:/var/www/html
+      - ${PHP_INI-./php.ini}:/usr/local/etc/php/php.ini
+      - ${VHOSTS_DIR-./custom.conf}:/etc/apache2/sites-enabled/custom.conf
+  web04:
+    build: 
+      context: ./webserver
+    container_name: 'web_${VERSION}_p4'
+    restart: 'always'
+    ports:
+      - "8084:80"
+    links: 
+      - mysql
+    volumes: 
+      - ${DOCUMENT_ROOT-./part4}:/var/www/html
+      - ${PHP_INI-./php.ini}:/usr/local/etc/php/php.ini
+      - ${VHOSTS_DIR-./custom.conf}:/etc/apache2/sites-enabled/custom.conf
+  web05:
+    build: 
+      context: ./webserver
+    container_name: 'web_${VERSION}_p5'
+    restart: 'always'
+    ports:
+      - "8085:80"
+    links: 
+      - mysql
+    volumes: 
+      - ${DOCUMENT_ROOT-./part5}:/var/www/html
+      - ${PHP_INI-./php.ini}:/usr/local/etc/php/php.ini
+      - ${VHOSTS_DIR-./custom.conf}:/etc/apache2/sites-enabled/custom.conf
+
