@@ -6,7 +6,7 @@ services:
     container_name: 'mysql_${VERSION}'
     restart: 'always'
     ports:
-      - "33066:3306"
+      - "3306:3306"
     volumes: 
       - ${INIT_SQL-./mysql/data}:/docker-entrypoint-initdb.d   # 官方Dockerfile自动执行docker-entrypoint-initdb.d的sh,sql,sql.gz文件.
     environment:

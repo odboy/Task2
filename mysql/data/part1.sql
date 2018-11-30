@@ -17,6 +17,6 @@ INSERT INTO users VALUES(3,'Alina','Alina@task.cn',2700);
 INSERT INTO users VALUES(4,'Jameson','Jameson@task.cn',10000);
 INSERT INTO users VALUES(5,'Allie','Allie@task.cn',6000);
 
-create table flag(flag varchar(30) not null);
-INSERT INTO flag VALUES('flag{dGFzazIuMS0yMDE4LTExLTMw}');
+create table flag(flag varchar(100) not null);
+INSERT INTO flag VALUES('flag{task2.1-WellDone}');
 

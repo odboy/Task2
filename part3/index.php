@@ -10,7 +10,7 @@ $a = "task2part3";
 $id = $_GET['id'];
 @parse_str($id);
 if ($a != 's1885207154a' && md5($a) == md5('s1885207154a')) {
-    echo 'Go ahead! there is a file called flaggg.php';
+    echo 'Go ahead! there is a file titled flaggg-new.php';
 }
 if ("0esddf"=="0essssdf") echo "====="
 ?>
